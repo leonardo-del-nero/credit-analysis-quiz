@@ -1,0 +1,272 @@
+[
+  {
+    "texto": "Há quantos anos mora no endereço atual?",
+    "categoria": "Analítico",
+    "opcoes": [
+      {
+        "resposta": "Mais de 10 anos ",
+        "peso": 6
+      },
+      {
+        "resposta": " 3-10 anos ",
+        "peso": 3
+      },
+      {
+        "resposta": " Menos de 3 anos",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Participa de projetos sociais/comunitários?",
+    "categoria": "Social",
+    "opcoes": [
+      {
+        "resposta": "Sim, ativamente ",
+        "peso": 8
+      },
+      {
+        "resposta": " Eventualmente ",
+        "peso": 4
+      },
+      {
+        "resposta": " Não",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Já foi recomendado por outro membro da comunidade?",
+    "categoria": "Social",
+    "opcoes": [
+      {
+        "resposta": "Sim ",
+        "peso": 6
+      },
+      {
+        "resposta": " Às vezes ",
+        "peso": 3
+      },
+      {
+        "resposta": " Não",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Já atrasou pagamento de contas nos últimos 12 meses?",
+    "categoria": "Financeiro",
+    "opcoes": [
+      {
+        "resposta": "Nunca ",
+        "peso": 8
+      },
+      {
+        "resposta": " 1-2 vezes ",
+        "peso": 4
+      },
+      {
+        "resposta": " Mais de 2 vezes",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Como comprova a renda/faturamento do seu negócio?",
+    "categoria": "Financeiro",
+    "opcoes": [
+      {
+        "resposta": "Documentos formais ",
+        "peso": 8
+      },
+      {
+        "resposta": " Recibos informais ",
+        "peso": 4
+      },
+      {
+        "resposta": " Não comprova",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Mantém separação das finanças pessoais e do negócio?",
+    "categoria": "Analítico",
+    "opcoes": [
+      {
+        "resposta": "Sim ",
+        "peso": 3
+      },
+      {
+        "resposta": " Parcialmente ",
+        "peso": 1
+      },
+      {
+        "resposta": " Não",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Compra de fornecedores locais regularmente?",
+    "categoria": "Analítico",
+    "opcoes": [
+      {
+        "resposta": "Sempre ",
+        "peso": 4
+      },
+      {
+        "resposta": " Frequentemente ",
+        "peso": 2
+      },
+      {
+        "resposta": " Raramente",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Participa de associação de bairro?",
+    "categoria": "Social",
+    "opcoes": [
+      {
+        "resposta": "Sim ",
+        "peso": 4
+      },
+      {
+        "resposta": " Às vezes ",
+        "peso": 2
+      },
+      {
+        "resposta": " Não",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Tem saldo médio positivo em conta bancária?",
+    "categoria": "Financeiro",
+    "opcoes": [
+      {
+        "resposta": "Sempre ",
+        "peso": 4
+      },
+      {
+        "resposta": " Às vezes ",
+        "peso": 2
+      },
+      {
+        "resposta": " Nunca",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Utiliza ferramentas digitais para gestão do negócio?",
+    "categoria": "Analítico",
+    "opcoes": [
+      {
+        "resposta": "Sim ",
+        "peso": 2
+      },
+      {
+        "resposta": " Às vezes ",
+        "peso": 1
+      },
+      {
+        "resposta": " Não",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Quantos anos de existência tem o negócio?",
+    "categoria": "Financeiro",
+    "opcoes": [
+      {
+        "resposta": "Mais de 10 anos ",
+        "peso": 6
+      },
+      {
+        "resposta": " 3-10 anos ",
+        "peso": 3
+      },
+      {
+        "resposta": " Menos de 3 anos",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Já participou de campanhas/rede social de causas locais?",
+    "categoria": "Social",
+    "opcoes": [
+      {
+        "resposta": "Sim ",
+        "peso": 3
+      },
+      {
+        "resposta": " Algumas vezes ",
+        "peso": 1
+      },
+      {
+        "resposta": " Não",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Mantém reservas financeiras?",
+    "categoria": "Financeiro",
+    "opcoes": [
+      {
+        "resposta": "Sim ",
+        "peso": 2
+      },
+      {
+        "resposta": " Parcialmente ",
+        "peso": 1
+      },
+      {
+        "resposta": " Não",
+        "peso": 0
+      }
+    ]
+  },
+  {
+    "texto": "Clientes e vizinhos validam sua reputação?",
+    "categoria": "Social",
+    "opcoes": [
+      {
+        "resposta": "Sim ",
+        "peso": 5
+      },
+      {
+        "resposta": " Parcialmente ",
+        "peso": 2
+      },
+      {
+        "resposta": " Não ",
+        "peso": 0
+      }
+    ]
+  },
+  {
+  "texto": "Já recorreu a empréstimos? Pagou pontualmente?",
+  "categoria": "Financeiro",
+  "opcoes": [
+    {
+      "resposta": " Sempre ",
+      "peso": 7
+    },
+    {
+      "resposta": " Às vezes atrasou ",
+      "peso": 3
+    },
+    {
+      "resposta": " Nunca tomou ",
+      "peso": 0
+    }
+  ]
+  }
+]
