@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List
-import CategoryResult
+from app.models.category_result import CategoryResult
 
 class FinalResult(BaseModel):
     total_points: int

@@ -32,7 +32,7 @@ function shuffleArray(array) {
 // 1. Busca as perguntas na API e inicia o quiz
 async function carregarPerguntas() {
     try {
-        const response = await fetch(`${API_URL}/perguntas`);
+        const response = await fetch(`${API_URL}/questions`); // CORRIGIDO: O endpoint era /perguntas, alterado para /questions para corresponder ao backend
         const data = await response.json();
         // ALTERAÇÃO: Embaralha a ordem das perguntas
         perguntas = shuffleArray(data);
@@ -86,9 +86,10 @@ function proximaPergunta() {
     }
 
     // Guarda a resposta
+    // CORRIGIDO: As chaves do objeto foram alteradas para corresponder ao modelo Pydantic UserAnswer
     respostasUsuario.push({
-        texto_pergunta: perguntas[indicePerguntaAtual].texto,
-        resposta: respostaSelecionada.value
+        question_text: perguntas[indicePerguntaAtual].texto,
+        answer: respostaSelecionada.value
     });
     
     indicePerguntaAtual++;
@@ -109,7 +110,7 @@ function proximaPergunta() {
 // 4. Envia as respostas para a API e exibe o resultado
 async function finalizarQuiz() {
     try {
-        const response = await fetch(`${API_URL}/resultado`, {
+        const response = await fetch(`${API_URL}/result`, { // CORRIGIDO: O endpoint era /resultado, alterado para /result
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(respostasUsuario)
@@ -127,15 +128,16 @@ function exibirResultado(data) {
     quizContainerEl.style.display = 'none';
     resultadoContainerEl.style.display = 'block';
 
-    document.getElementById('total-score').innerText = data.pontuacao_total;
+    // CORRIGIDO: As chaves do objeto de dados foram atualizadas para corresponder à resposta da API
+    document.getElementById('total-score').innerText = data.total_points;
     
     const categoryScoresEl = document.getElementById('category-scores');
     categoryScoresEl.innerHTML = ''; // Limpa resultados anteriores
     
-    data.pontuacao_por_categoria.forEach(item => {
-        const emoji = item.pontos >= 0 ? '✅' : '⚠️';
+    data.category_results.forEach(item => {
+        const emoji = item.points >= 0 ? '✅' : '⚠️';
         const p = document.createElement('p');
-        p.innerHTML = `${emoji} <strong>${item.categoria}:</strong> ${item.pontos} pontos`;
+        p.innerHTML = `${emoji} <strong>${item.category}:</strong> ${item.points} pontos`;
         categoryScoresEl.appendChild(p);
     });
 }
