@@ -23,6 +23,14 @@ app.add_middleware(
 with open('questions.json', 'r', encoding='utf-8') as f:
     questions_with_weights = json.load(f)
 
+MAX_POINTS = 76
+
+category_max_points = {
+    "Social": 26,
+    "Financeiro": 35,
+    "Analítico": 15
+}
+
 questions_to_frontend = [
     {
         "texto": q["texto"],
@@ -53,7 +61,24 @@ def calculate_result(answers: List[UserAnswer]):
             category_points[category] = category_points.get(category, 0) + weight
             total_points += weight
             
-    category_results = [CategoryResult(category=cat, points=pts) for cat, pts in category_points.items()]
+    category_results = []
+    for cat, pts in category_points.items():
+        max_pts = category_max_points.get(cat, 1)
+        percentage = (pts / max_pts) * 100 if max_pts > 0 else 0
+        category_results.append(CategoryResult(category=cat, points=pts, percentage=percentage))
 
-    return FinalResult(total_points=total_points, category_results=category_results)
+
+    score_percentage = (total_points / MAX_POINTS) * 100
+
+    if score_percentage >= 80:
+        risk_level = 'Baixo Risco'
+        recommended_decision = 'Aprovar Crédito'
+    elif score_percentage < 80 and score_percentage >= 60:
+        risk_level = 'Médio Risco'
+        recommended_decision = 'Análise complementar'
+    else:
+        risk_level = 'Alto Risco'
+        recommended_decision = 'Rejeitado'
+
+    return FinalResult(total_points=total_points, category_results=category_results, score_percentage=score_percentage, risk_level=risk_level, recommended_decision=recommended_decision)
         

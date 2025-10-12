@@ -130,3 +130,26 @@ body {
     margin-top: 8px;
     font-size: 0.9em;
 }
+
+/* --- NOVOS ESTILOS PARA A DECISÃO --- */
+.decision-text-style {
+    font-size: 1.8em;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.decision-aprovado {
+    background-color: #28a745; /* Verde */
+}
+
+.decision-analise {
+    background-color: #ffc107; /* Amarelo */
+    color: #333; /* Texto escuro para melhor contraste */
+}
+
+.decision-rejeitado {
+    background-color: #dc3545; /* Vermelho */
+}
