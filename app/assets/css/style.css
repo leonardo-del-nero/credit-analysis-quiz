@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ebc700;
-    color: #333;
+    background-color: #000000;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,9 +18,9 @@ body {
 
 /* --- Card Principal do Quiz --- */
 .quiz-card {
-    background-color: #ffffff;
+    background-color: #000000;
+    border: #ffd000 1px solid;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 80%;
     height: 70vh;
     overflow: hidden;
@@ -38,8 +38,8 @@ body {
 /* --- Cabeçalho e Progresso --- */
 .card-header {
     padding: 20px 25px;
-    background-color: #000000;
-    color: white;
+    background-color: #ffd000;
+    color: rgb(0, 0, 0);
 }
 
 #progress-header {
@@ -92,40 +92,42 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fffff3;
-    border: 2px solid #fffadb;
+    background-color: #000000;
+    border: 2px solid #ffd000;
     border-radius: 8px;
     padding: 15px;
     cursor: pointer;
     transition: all 0.2s ease;
     height: 100%;
     font-size: 20px;
+    color: #ffd000;
 }
 
 #opcoes-form label:hover {
-    border-color: #f7f1bb;
+    font-size: 23px;
 }
 
 /* Estilo para a opção SELECIONADA */
 #opcoes-form input[type="radio"]:checked + label {
-    background-color: #ffde22;
-    border-color: #ffde22;
+    background-color: #ffd000;
+    border-color: #ffd000;
+    color:#000000;
     font-weight: 600;
 }
 
 /* --- Rodapé e Botão de Ação --- */
 .card-footer {
     padding: 25px;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid #ffd000;
     display: flex;
     justify-content: flex-end;
 }
 
 #next-btn {
-    background-color: #6a5af9;
-    color: white;
-    border: none;
+    background-color: #000000;
+    border: #ffd000 1px solid;
     border-radius: 8px;
+    color: #ffd000;
     padding: 12px 30px;
     font-size: 1em;
     font-weight: 600;
@@ -134,11 +136,14 @@ body {
 }
 
 #next-btn:hover {
-    background-color: #5848d8;
+    background-color: #ffd000;
+    color: #000000;
 }
 
 #next-btn:disabled {
-    background-color: #c1c1c1;
+    border: #463900 1px solid;
+    background-color: #000000;
+    color:#463900;
     cursor: not-allowed;
 }
 

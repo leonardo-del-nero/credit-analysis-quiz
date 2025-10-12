@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Colmeia — Simulador Game de Crédito</title>
+  <link rel="stylesheet" href="./assets/css/home.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" title="Home">
+        <img src="./src/imagem/logo.png" alt="Logo Colmeia" id="siteLogo" class="logo">
+      </a>
+
+      <nav id="mainNav" class="nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#simulador" class="nav-link">Simulador</a>
+        <a href="#historico" class="nav-link">Histórico</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+      </nav>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="intro">
+      <h1>Bem-vindo à Colmeia</h1>
+      <p>Responda às perguntas do nosso mini-game. Cada resposta soma pontos — no final exibiremos sua chance de aprovação de crédito.</p>
+
+      <div class="start-actions">
+        <input id="cpfCheck" placeholder="Digite seu CPF (opcional) 000.000.000-00" maxlength="14" aria-label="CPF">
+        <input id="nomeInput" placeholder="Nome (opcional)" maxlength="80" aria-label="Nome">
+        <button id="startBtn" class="btn">Iniciar Simulação</button>
+      </div>
+    </section>
+
+    <!-- Simulador (esconde inicialmente) -->
+    <section id="simulador" class="card hidden">
+      <div class="game-header">
+        <div id="questionCounter">Pergunta 1 / 15</div>
+        <div id="scoreSummary">Pontos: <span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <div id="questionArea" class="question-area">
+        <!-- Perguntas renderizadas pelo JS -->
+      </div>
+
+      <div class="game-controls">
+        <button id="prevBtn" class="btn secondary" disabled>Anterior</button>
+        <button id="nextBtn" class="btn">Próxima</button>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label">Progresso</div>
+        <div class="progress-bar-outer">
+          <div id="progressBar" class="progress-bar-inner">0%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resultado -->
+    <section id="resultado" class="card hidden">
+      <h2>Resultado da Simulação</h2>
+      <div id="finalMessage" class="final-message"></div>
+      <div id="detailBox" class="detail-box"></div>
+      <div class="result-actions">
+        <button id="restartBtn" class="btn secondary">Reiniciar</button>
+        <button id="saveBtn" class="btn" disabled>Salvar no Histórico</button>
+      </div>
+    </section>
+
+    <!-- Histórico -->
+    <section id="historico" class="card">
+      <h2>Histórico de Simulações</h2>
+      <div id="historyList" class="history-list">Nenhuma simulação realizada ainda.</div>
+      <button id="clearHistory" class="btn secondary">Limpar histórico</button>
+    </section>
+
+    <section id="sobre" class="card">
+      <h2>Sobre</h2>
+      <p>Protótipo local — decisões reais devem ser tratadas por servidores com validações e conformidade.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Colmeia — Simulador de Crédito (demo)</p>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
