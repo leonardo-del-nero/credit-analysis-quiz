@@ -18,12 +18,9 @@ let respostasUsuario = [];
 
 // NOVA FUNÇÃO: Embaralha os itens de um array e retorna um novo array embaralhado
 function shuffleArray(array) {
-    // Cria uma cópia do array para não modificar o original
     const shuffled = [...array]; 
     for (let i = shuffled.length - 1; i > 0; i--) {
-        // Escolhe um índice aleatório antes do elemento atual
         const j = Math.floor(Math.random() * (i + 1));
-        // Troca o elemento atual com o elemento do índice aleatório
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
@@ -32,9 +29,8 @@ function shuffleArray(array) {
 // 1. Busca as perguntas na API e inicia o quiz
 async function carregarPerguntas() {
     try {
-        const response = await fetch(`${API_URL}/questions`); // CORRIGIDO: O endpoint era /perguntas, alterado para /questions para corresponder ao backend
+        const response = await fetch(`${API_URL}/questions`);
         const data = await response.json();
-        // ALTERAÇÃO: Embaralha a ordem das perguntas
         perguntas = shuffleArray(data);
         mostrarPergunta();
     } catch (error) {
@@ -45,21 +41,15 @@ async function carregarPerguntas() {
 
 // 2. Exibe a pergunta atual e suas opções
 function mostrarPergunta() {
-    // Remove a classe de fade para a animação de entrada
     quizContainerEl.classList.remove('fade-out');
-
     const pergunta = perguntas[indicePerguntaAtual];
-    
-    // ALTERAÇÃO: Embaralha as opções da pergunta atual
     const opcoesEmbaralhadas = shuffleArray(pergunta.opcoes);
 
-    // Atualiza o progresso
     progressHeaderEl.innerText = `Pergunta ${indicePerguntaAtual + 1} de ${perguntas.length}`;
     perguntaTextoEl.innerText = pergunta.texto;
-    opcoesFormEl.innerHTML = ''; // Limpa as opções anteriores
-    nextBtnEl.disabled = true; // Desabilita o botão
+    opcoesFormEl.innerHTML = '';
+    nextBtnEl.disabled = true;
 
-    // Cria os radio buttons para cada opção (usando as opções embaralhadas)
     opcoesEmbaralhadas.forEach((opcao, index) => {
         const opcaoId = `opcao${index}`;
         const opcaoItem = document.createElement('div');
@@ -71,7 +61,6 @@ function mostrarPergunta() {
         opcoesFormEl.appendChild(opcaoItem);
     });
     
-    // Atualiza o texto do botão na última pergunta
     if (indicePerguntaAtual === perguntas.length - 1) {
         nextBtnEl.innerText = 'Finalizar';
     }
@@ -85,32 +74,27 @@ function proximaPergunta() {
         return;
     }
 
-    // Guarda a resposta
-    // CORRIGIDO: As chaves do objeto foram alteradas para corresponder ao modelo Pydantic UserAnswer
     respostasUsuario.push({
         question_text: perguntas[indicePerguntaAtual].texto,
         answer: respostaSelecionada.value
     });
     
     indicePerguntaAtual++;
-
-    // Animação de saída
     quizContainerEl.classList.add('fade-out');
 
-    // Espera a animação terminar para mostrar a próxima pergunta ou o resultado
     setTimeout(() => {
         if (indicePerguntaAtual < perguntas.length) {
             mostrarPergunta();
         } else {
             finalizarQuiz();
         }
-    }, 300); // mesmo tempo da transição do CSS
+    }, 300);
 }
 
 // 4. Envia as respostas para a API e exibe o resultado
 async function finalizarQuiz() {
     try {
-        const response = await fetch(`${API_URL}/result`, { // CORRIGIDO: O endpoint era /resultado, alterado para /result
+        const response = await fetch(`${API_URL}/result`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(respostasUsuario)
@@ -123,23 +107,39 @@ async function finalizarQuiz() {
     }
 }
 
-// 5. Formata e exibe a tela de resultado
+// 5. Formata e exibe a tela de resultado (FUNÇÃO ATUALIZADA)
 function exibirResultado(data) {
     quizContainerEl.style.display = 'none';
     resultadoContainerEl.style.display = 'block';
 
-    // CORRIGIDO: As chaves do objeto de dados foram atualizadas para corresponder à resposta da API
-    document.getElementById('total-score').innerText = data.total_points;
+    const decisionTextEl = document.getElementById('decision-text');
+    const scorePercentageEl = document.getElementById('score-percentage');
+    const riskLevelEl = document.getElementById('risk-level');
     
+    decisionTextEl.innerText = data.recommended_decision;
+    scorePercentageEl.innerText = data.score_percentage.toFixed(2);
+    riskLevelEl.innerText = data.risk_level;
+
+    decisionTextEl.className = 'decision-text-style';
+    if (data.recommended_decision === "Aprovar Crédito") { // Ajuste para corresponder ao backend
+        decisionTextEl.classList.add('decision-aprovado');
+    } else if (data.recommended_decision === "Análise complementar") {
+        decisionTextEl.classList.add('decision-analise');
+    } else {
+        decisionTextEl.classList.add('decision-rejeitado');
+    }
+
     const categoryScoresEl = document.getElementById('category-scores');
-    categoryScoresEl.innerHTML = ''; // Limpa resultados anteriores
+    categoryScoresEl.innerHTML = '';
     
+    // --- LINHA MODIFICADA ---
     data.category_results.forEach(item => {
-        const emoji = item.points >= 0 ? '✅' : '⚠️';
         const p = document.createElement('p');
-        p.innerHTML = `${emoji} <strong>${item.category}:</strong> ${item.points} pontos`;
+        // A mágica acontece aqui: usamos item.percentage em vez de item.points
+        p.innerHTML = `<strong>${item.category}:</strong> ${item.percentage.toFixed(2)}% do total`;
         categoryScoresEl.appendChild(p);
     });
+    // --- FIM DA MODIFICAÇÃO ---
 }
 
 // --- Event Listeners ---
