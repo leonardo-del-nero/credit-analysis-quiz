@@ -25,9 +25,9 @@ with open('questions.json', 'r', encoding='utf-8') as f:
 
 questions_to_frontend = [
     {
-        "text": q["texto"],
-        "options": [opt["resposta"] for opt in q["opcoes"]],
-        "category": q["categoria"]
+        "texto": q["texto"],
+        "opcoes": [opt["resposta"] for opt in q["opcoes"]],
+        "categoria": q["categoria"]
     }
     for q in questions_with_weights
 ]
