@@ -1,45 +1,93 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Interativo - Análise de Perfil</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Colmeia — Simulador Game de Crédito</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" title="Home">
+        <img src="./src/imagem/logo.png" alt="Logo Colmeia" id="siteLogo" class="logo">
+      </a>
 
-    <div id="quiz-container" class="quiz-card">
-        <div class="card-header">
-            <p id="progress-header">Carregando...</p>
-        </div>
-        <div class="card-body">
-            <h2 id="pergunta-texto"></h2>
-            <form id="opcoes-form"></form>
-        </div>
-        <div class="card-footer">
-            <button id="next-btn" disabled>Próximo</button>
-        </div>
+      <nav id="mainNav" class="nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#simulador" class="nav-link">Simulador</a>
+        <a href="#historico" class="nav-link">Histórico</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+      </nav>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Abrir menu">☰</button>
     </div>
+  </header>
 
-    <div id="resultado-container" class="quiz-card" style="display: none;">
-        <div class="card-header">
-            <p>Análise Concluída!</p>
+  <main class="container" id="home">
+    <section class="intro">
+      <h1>Bem-vindo à Colmeia</h1>
+      <p>Responda às perguntas do nosso mini-game. Cada resposta soma pontos — no final exibiremos sua chance de aprovação de crédito.</p>
+
+      <div class="start-actions">
+        <input id="cpfCheck" placeholder="Digite seu CPF (opcional) 000.000.000-00" maxlength="14" aria-label="CPF">
+        <input id="nomeInput" placeholder="Nome (opcional)" maxlength="80" aria-label="Nome">
+        <button id="startBtn" class="btn">Iniciar Simulação</button>
+      </div>
+    </section>
+
+    <!-- Simulador (esconde inicialmente) -->
+    <section id="simulador" class="card hidden">
+      <div class="game-header">
+        <div id="questionCounter">Pergunta 1 / 15</div>
+        <div id="scoreSummary">Pontos: <span id="scoreNow">0</span> / <span id="scoreMax">0</span></div>
+      </div>
+
+      <div id="questionArea" class="question-area">
+        <!-- Perguntas renderizadas pelo JS -->
+      </div>
+
+      <div class="game-controls">
+        <button id="prevBtn" class="btn secondary" disabled>Anterior</button>
+        <button id="nextBtn" class="btn">Próxima</button>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label">Progresso</div>
+        <div class="progress-bar-outer">
+          <div id="progressBar" class="progress-bar-inner">0%</div>
         </div>
-        <div class="card-body">
-            <h2>Decisão Recomendada:</h2>
-            <p id="decision-text" class="decision-text-style"></p> <p><strong>Score Percentual:</strong> <span id="score-percentage"></span>%</p>
-            <p><strong>Nível de Risco:</strong> <span id="risk-level"></span></p>
+      </div>
+    </section>
 
-            <h3 style="margin-top: 20px;">Detalhes por Categoria:</h3>
-            <div id="category-scores"></div>
-        </div>
-    </div>
+    <!-- Resultado -->
+    <section id="resultado" class="card hidden">
+      <h2>Resultado da Simulação</h2>
+      <div id="finalMessage" class="final-message"></div>
+      <div id="detailBox" class="detail-box"></div>
+      <div class="result-actions">
+        <button id="restartBtn" class="btn secondary">Reiniciar</button>
+        <button id="saveBtn" class="btn" disabled>Salvar no Histórico</button>
+      </div>
+    </section>
 
-    <script src="assets/js/scripts.js"></script>
+    <!-- Histórico -->
+    <section id="historico" class="card">
+      <h2>Histórico de Simulações</h2>
+      <div id="historyList" class="history-list">Nenhuma simulação realizada ainda.</div>
+      <button id="clearHistory" class="btn secondary">Limpar histórico</button>
+    </section>
+
+    <section id="sobre" class="card">
+      <h2>Sobre</h2>
+      <p>Protótipo local — decisões reais devem ser tratadas por servidores com validações e conformidade.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Colmeia — Simulador de Crédito (demo)</p>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>

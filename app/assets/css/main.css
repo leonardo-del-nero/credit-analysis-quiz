@@ -1,10 +1,10 @@
 :root{
   --bg: #000000;       /* fundo preto (combina com a logo que enviou) */
-  --text: #ffcc00;     /* amarelo principal (texto/destaque) */
+  --text: #a80070;     /* amarelo principal (texto/destaque) */
   --muted: #9aa4b2;
-  --card: rgba(255,255,255,0.02);
-  --accent: #ffcc00;
-  --accent-dark: #e6b800;
+  --card: rgba(39, 0, 37, 0.02);
+  --accent: #a80070;
+  --accent-dark: rgb(151, 0, 83);
   --success: #16a34a;
   --danger: #ef4444;
   --max-width: 1100px;
@@ -27,7 +27,7 @@ body{
 /* header */
 .site-header{
   background: transparent;
-  border-bottom: 2px solid rgba(255,204,0,0.06);
+  border-bottom: 2px solid rgba(255, 0, 242, 0.06);
   padding: 12px 16px;
   position: sticky;
   top: 0;
@@ -53,7 +53,7 @@ body{
   font-weight:600;
   transition: background .18s ease, color .18s ease;
 }
-.nav-link:hover{background:rgba(255,204,0,0.06); color:var(--accent-dark)}
+.nav-link:hover{background:rgba(255, 0, 212, 0.06); color:var(--accent-dark)}
 
 .nav-toggle{display:none; background:transparent; color:var(--text); border:0; font-size:22px; cursor:pointer}
 
@@ -81,11 +81,11 @@ body{
 
 /* cards */
 .card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02rgba(255, 255, 255, 0.01)01));
   border-radius:12px;
   padding:18px;
   margin-bottom:16px;
-  box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+  border: #a80070 1px solid;
 }
 .hidden{display:none}
 
@@ -99,7 +99,7 @@ body{
   cursor:pointer;background:transparent;
 }
 .choice input{accent-color:var(--accent); transform:scale(1.02)}
-.choice:hover{background:rgba(255,255,255,0.01)}
+.choice:hover{background:rgba(255, 255, 255, 0.01)}
 
 /* controls */
 .game-controls{display:flex;justify-content:space-between;margin-top:12px;gap:8px}
@@ -107,7 +107,7 @@ body{
 /* progress */
 .progress-wrap{margin-top:14px}
 .progress-label{font-size:13px;color:var(--muted);margin-bottom:6px}
-.progress-bar-outer{background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;height:26px}
+.progress-bar-outer{background:rgba(255, 255, 255, 0.03);border-radius:10px;overflow:hidden;height:26px}
 .progress-bar-inner{
   height:100%;
   width:0%;
