@@ -1,49 +1,25 @@
 [
   {
-    "timestamp": "2025-10-16T12:49:33.880640",
-    "total_points": 40,
-    "category_results": [
-      {
-        "category": "Anal\u00edtico",
-        "points": 3,
-        "percentage": 20.0
-      },
-      {
-        "category": "Social",
-        "points": 16,
-        "percentage": 61.53846153846154
-      },
-      {
-        "category": "Financeiro",
-        "points": 21,
-        "percentage": 60.0
-      }
-    ],
-    "score_percentage": 52.63157894736842,
-    "risk_level": "Alto Risco",
-    "recommended_decision": "Rejeitado"
-  },
-  {
-    "timestamp": "2025-10-16T12:50:32.879793",
-    "total_points": 66,
+    "timestamp": "2025-10-16T14:58:00.816119",
+    "total_points": 76,
     "category_results": [
       {
         "category": "Social",
-        "points": 24,
-        "percentage": 92.3076923076923
+        "points": 26,
+        "percentage": 100.0
       },
       {
         "category": "Financeiro",
-        "points": 29,
-        "percentage": 82.85714285714286
+        "points": 35,
+        "percentage": 100.0
       },
       {
         "category": "Anal\u00edtico",
-        "points": 13,
-        "percentage": 86.66666666666667
+        "points": 15,
+        "percentage": 100.0
       }
     ],
-    "score_percentage": 86.8421052631579,
+    "score_percentage": 100.0,
     "risk_level": "Baixo Risco",
     "recommended_decision": "Aprovar Cr\u00e9dito"
   }

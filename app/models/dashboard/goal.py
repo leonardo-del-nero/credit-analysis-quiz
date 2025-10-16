@@ -1,7 +1,9 @@
 from pydantic import BaseModel
 
 class Goal(BaseModel):
-    id: int
+    id: str
     descricao: str
-    concluido: bool = False
-    
+    niveis: int = 1
+    nivel_atual: int = 0
+    concluido: bool
+    para_completar: str

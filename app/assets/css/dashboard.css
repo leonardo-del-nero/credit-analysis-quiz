@@ -1,0 +1,79 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+#score-card {
+    grid-column: 1 / 3;
+}
+
+#pilares-card {
+    grid-column: 1 / 2;
+}
+
+#objetivos-card {
+    grid-column: 2 / 3;
+}
+
+#badges-card {
+    grid-column: 1 / 3;
+}
+
+#objetivos-list {
+    list-style: none;
+    padding: 0;
+}
+
+#objetivos-list li {
+    margin-bottom: 10px;
+    opacity: 0.6;
+}
+
+#objetivos-list li.concluido {
+    opacity: 1;
+    text-decoration: line-through;
+}
+
+#objetivos-list li::before {
+    content: '☐ ';
+}
+
+#objetivos-list li.concluido::before {
+    content: '☑ ';
+}
+
+#badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.badge-item {
+    text-align: center;
+}
+
+.badge-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--muted);
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 5px;
+    opacity: 0.5;
+}
+
+.badge-item.conquistado .badge-circle {
+    border-color: var(--accent);
+    opacity: 1;
+}
+
+.badge-item p {
+    font-size: 12px;
+    margin: 0;
+}

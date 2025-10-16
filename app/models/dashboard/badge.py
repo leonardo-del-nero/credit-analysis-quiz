@@ -1,7 +1,9 @@
 from pydantic import BaseModel
 
 class Badge(BaseModel):
-    id: int
+    id: str
     nome: str
-    conquistado: bool = False
+    niveis: int
+    nivel_atual: int
+    descricao: str
     
