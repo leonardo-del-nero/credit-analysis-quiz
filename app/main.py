@@ -59,7 +59,9 @@ def save_result_to_history(result: FinalResult):
         json.dump(history, f, indent=2)
 
 def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
-    """Atualiza o dashboard com base no resultado do quiz e nas regras do Plano de Ação."""
+    """
+    Atualiza o dashboard com base no resultado do quiz e nas regras do Plano de Ação.
+    """
     dashboard = load_dashboard_data()
 
     # 1. Atualiza score geral e progresso dos pilares
@@ -72,17 +74,23 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
     # 2. Lógica para atualizar Badges com base nas respostas do quiz
     regras_quiz = {
         "Já atrasou pagamento de contas nos últimos 12 meses?": {
-            "badge_id": "compromisso", "respostas": { "Nunca ": 2, "1-2 vezes ": 1, "Mais de 2 vezes": 0 }
+            "badge_id": "compromisso",
+            # CORREÇÃO: Removidos espaços do final das chaves
+            "respostas": { "Nunca": 2, "1-2 vezes": 1, "Mais de 2 vezes": 0 }
         },
         "Como comprova a renda/faturamento do seu negócio?": {
-            "badge_id": "organizacao_fiscal", "respostas": { "Documentos formais ": 1, "Recibos informais ": 1, "Não comprova": 0 }
+            "badge_id": "organizacao_fiscal",
+            "respostas": { "Documentos formais": 1, "Recibos informais": 1, "Não comprova": 0 }
         },
         "Mantém reservas financeiras?": {
-            "badge_id": "preparacao", "respostas": { "Sim ": 1, "Parcialmente ": 0, "Não": 0 }
+            "badge_id": "preparacao",
+            "respostas": { "Sim": 1, "Parcialmente": 0, "Não": 0 }
         },
         "Há quantos anos mora no endereço atual?": {
-            "badge_id": "estabilidade", "respostas": { "Mais de 10 anos ": 2, "3-10 anos ": 1, "Menos de 3 anos": 0 }
+            "badge_id": "estabilidade",
+            "respostas": { "Mais de 10 anos": 2, "3-10 anos": 1, "Menos de 3 anos": 0 }
         }
+        # Para habilitar as outras 5 badges, adicione as regras delas aqui!
     }
     
     for user_answer in answers:
@@ -90,7 +98,9 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
             regra = regras_quiz[user_answer.question_text]
             badge = next((b for b in dashboard.badges if b.id == regra["badge_id"]), None)
             if badge:
-                nivel_conquistado = regra["respostas"].get(user_answer.answer.strip(), 0) # .strip() para limpar espaços
+                # CORREÇÃO: Usar .strip() para limpar os espaços em branco da resposta do usuário
+                answer_text = user_answer.answer.strip()
+                nivel_conquistado = regra["respostas"].get(answer_text, 0)
                 badge.nivel_atual = max(badge.nivel_atual, nivel_conquistado)
 
     save_dashboard_data(dashboard)

@@ -5,28 +5,28 @@
       "id": "compromisso",
       "nome": "Compromisso",
       "niveis": 2,
-      "nivel_atual": 0,
+      "nivel_atual": 2,
       "descricao": "Conquistado por n\u00e3o ter atraso nos pagamentos."
     },
     {
       "id": "organizacao_fiscal",
       "nome": "Organiza\u00e7\u00e3o Fiscal",
       "niveis": 1,
-      "nivel_atual": 0,
+      "nivel_atual": 1,
       "descricao": "Conquistado pela comprova\u00e7\u00e3o de renda."
     },
     {
       "id": "preparacao",
       "nome": "Prepara\u00e7\u00e3o",
       "niveis": 1,
-      "nivel_atual": 0,
+      "nivel_atual": 1,
       "descricao": "Conquistado por manter reservas financeiras."
     },
     {
       "id": "estabilidade",
       "nome": "Estabilidade",
       "niveis": 2,
-      "nivel_atual": 0,
+      "nivel_atual": 2,
       "descricao": "Conquistado por tempo de moradia no mesmo endere\u00e7o."
     },
     {
@@ -74,7 +74,7 @@
         {
           "id": "obj_sem_atraso",
           "descricao": "Atingir N\u00edvel 2 em 'Compromisso'",
-          "niveis": 2,
+          "niveis": 1,
           "nivel_atual": 0,
           "concluido": false,
           "para_completar": "Conectar conta banc\u00e1ria (n\u00e3o funcional)."
@@ -98,14 +98,14 @@
       ]
     },
     {
-      "id": "analitico",
+      "id": "anal\u00edtico",
       "nome": "Pilar Anal\u00edtico",
-      "progresso": 0.0,
+      "progresso": 100.0,
       "objetivos": [
         {
           "id": "obj_moradia",
           "descricao": "Atingir N\u00edvel 2 em 'Estabilidade'",
-          "niveis": 2,
+          "niveis": 1,
           "nivel_atual": 0,
           "concluido": false,
           "para_completar": "Informar o ano em que se mudou."
