@@ -1,5 +1,5 @@
 // --- Constantes e Variáveis de Estado ---
-const API_URL = 'http://127.0.0.1:8000'; 
+const API_URL = 'http://127.0.0.1:8084';
 
 // Elementos do DOM
 const quizContainerEl = document.getElementById('quiz-container');
@@ -18,7 +18,7 @@ let respostasUsuario = [];
 
 // NOVA FUNÇÃO: Embaralha os itens de um array e retorna um novo array embaralhado
 function shuffleArray(array) {
-    const shuffled = [...array]; 
+    const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -60,7 +60,7 @@ function mostrarPergunta() {
         `;
         opcoesFormEl.appendChild(opcaoItem);
     });
-    
+
     if (indicePerguntaAtual === perguntas.length - 1) {
         nextBtnEl.innerText = 'Finalizar';
     }
@@ -78,7 +78,7 @@ function proximaPergunta() {
         question_text: perguntas[indicePerguntaAtual].texto,
         answer: respostaSelecionada.value
     });
-    
+
     indicePerguntaAtual++;
     quizContainerEl.classList.add('fade-out');
 
@@ -115,7 +115,7 @@ function exibirResultado(data) {
     const decisionTextEl = document.getElementById('decision-text');
     const scorePercentageEl = document.getElementById('score-percentage');
     const riskLevelEl = document.getElementById('risk-level');
-    
+
     decisionTextEl.innerText = data.recommended_decision;
     scorePercentageEl.innerText = data.score_percentage.toFixed(2);
     riskLevelEl.innerText = data.risk_level;
@@ -131,7 +131,7 @@ function exibirResultado(data) {
 
     const categoryScoresEl = document.getElementById('category-scores');
     categoryScoresEl.innerHTML = '';
-    
+
     // --- LINHA MODIFICADA ---
     data.category_results.forEach(item => {
         const p = document.createElement('p');

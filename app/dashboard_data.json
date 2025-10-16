@@ -1,0 +1,61 @@
+{
+    "score_geral": 0.0,
+    "pilares": [
+        {
+            "nome": "Financeiro",
+            "progresso": 0.0
+        },
+        {
+            "nome": "Social",
+            "progresso": 0.0
+        },
+        {
+            "nome": "Analítico",
+            "progresso": 0.0
+        }
+    ],
+    "proximos_objetivos": [
+        {
+            "id": 1,
+            "descricao": "Concluir a primeira análise de perfil",
+            "concluido": false
+        },
+        {
+            "id": 2,
+            "descricao": "Atingir 70% no pilar Financeiro",
+            "concluido": false
+        },
+        {
+            "id": 3,
+            "descricao": "Atingir 70% no pilar Social",
+            "concluido": false
+        },
+        {
+            "id": 4,
+            "descricao": "Atingir 70% no pilar Analítico",
+            "concluido": false
+        }
+    ],
+    "badges": [
+        {
+            "id": 1,
+            "nome": "Analista Iniciante",
+            "conquistado": false
+        },
+        {
+            "id": 2,
+            "nome": "Mestre das Finanças",
+            "conquistado": false
+        },
+        {
+            "id": 3,
+            "nome": "Bom de Papo",
+            "conquistado": false
+        },
+        {
+            "id": 4,
+            "nome": "Estrategista",
+            "conquistado": false
+        }
+    ]
+}
