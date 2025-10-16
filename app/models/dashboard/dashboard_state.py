@@ -5,7 +5,8 @@ from .goal import Goal
 from .badge import Badge
 
 class DashboardState(BaseModel):
-    general_score: float
-    pilars: List[Pilar]
-    goals: List[Goal]
+    score_geral: float
+    pilares: List[Pilar]
+    proximos_objetivos: List[Goal]
     badges: List[Badge]
+    

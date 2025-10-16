@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
-
 class Badge(BaseModel):
     id: int
-    name: str
-    conquisted: bool = False
+    nome: str
+    conquistado: bool = False
+    
