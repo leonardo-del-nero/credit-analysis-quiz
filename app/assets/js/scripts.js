@@ -45,7 +45,7 @@ async function carregarPerguntas() {
 function mostrarPergunta() {
     quizContainerEl.classList.remove('fade-out');
     const pergunta = perguntas[indicePerguntaAtual];
-    const opcoes = pergunta.opcoes;
+    const opcoes = shuffleArray(pergunta.opcoes);
 
     progressHeaderEl.innerText = `Pergunta ${indicePerguntaAtual + 1} de ${perguntas.length}`;
     perguntaTextoEl.innerText = pergunta.texto;
