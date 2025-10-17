@@ -1,0 +1,163 @@
+{
+    "score_geral": 0.0,
+    "badges": [
+        {
+            "id": "compromisso",
+            "nome": "Compromisso",
+            "niveis": 2,
+            "nivel_atual": 0,
+            "descricao": "Conquistado por não ter atraso nos pagamentos."
+        },
+        {
+            "id": "organizacao_fiscal",
+            "nome": "Organização Fiscal",
+            "niveis": 1,
+            "nivel_atual": 0,
+            "descricao": "Conquistado pela comprovação de renda."
+        },
+        {
+            "id": "preparacao",
+            "nome": "Preparação",
+            "niveis": 1,
+            "nivel_atual": 0,
+            "descricao": "Conquistado por manter reservas financeiras."
+        },
+        {
+            "id": "estabilidade",
+            "nome": "Estabilidade",
+            "niveis": 2,
+            "nivel_atual": 0,
+            "descricao": "Conquistado por tempo de moradia no mesmo endereço."
+        },
+        {
+            "id": "planejamento",
+            "nome": "Planejamento",
+            "niveis": 1,
+            "nivel_atual": 0,
+            "descricao": "Conquistado por utilizar fornecedores certificados."
+        },
+        {
+            "id": "gestao_inteligente",
+            "nome": "Gestão Inteligente",
+            "niveis": 1,
+            "nivel_atual": 0,
+            "descricao": "Conquistado por separar as finanças pessoais e do negócio."
+        },
+        {
+            "id": "comprometimento_comunidade",
+            "nome": "Comprometimento",
+            "niveis": 1,
+            "nivel_atual": 0,
+            "descricao": "Conquistado pela participação em associações de bairro."
+        },
+        {
+            "id": "reconhecimento",
+            "nome": "Reconhecimento",
+            "niveis": 1,
+            "nivel_atual": 0,
+            "descricao": "Conquistado por recomendação de outros membros da comunidade."
+        },
+        {
+            "id": "acoes_sociais",
+            "nome": "Ações Sociais",
+            "niveis": 1,
+            "nivel_atual": 0,
+            "descricao": "Conquistado pela participação em projetos sociais."
+        }
+    ],
+    "pilares": [
+        {
+            "id": "financeiro",
+            "nome": "Pilar Financeiro",
+            "progresso": 0.0,
+            "objetivos": [
+                {
+                    "id": "obj_sem_atraso",
+                    "descricao": "Atingir Nível 2 em 'Compromisso'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Conectar conta bancária (não funcional)."
+                },
+                {
+                    "id": "obj_comprovacao_renda",
+                    "descricao": "Conquistar 'Organização Fiscal'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Anexar documentos fiscais dos últimos 3 meses."
+                },
+                {
+                    "id": "obj_reservas",
+                    "descricao": "Conquistar 'Preparação'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Conectar conta bancária (não funcional)."
+                }
+            ]
+        },
+        {
+            "id": "analítico",
+            "nome": "Pilar Analítico",
+            "progresso": 0.0,
+            "objetivos": [
+                {
+                    "id": "obj_moradia",
+                    "descricao": "Atingir Nível 2 em 'Estabilidade'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Informar o ano em que se mudou."
+                },
+                {
+                    "id": "obj_fornecedores",
+                    "descricao": "Conquistar 'Planejamento'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Anexar documentos fiscais."
+                },
+                {
+                    "id": "obj_separar_financas",
+                    "descricao": "Conquistar 'Gestão Inteligente'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Conectar conta bancária (não funcional)."
+                }
+            ]
+        },
+        {
+            "id": "social",
+            "nome": "Pilar Social",
+            "progresso": 0.0,
+            "objetivos": [
+                {
+                    "id": "obj_associacao",
+                    "descricao": "Conquistar 'Comprometimento'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Anexar arquivos que comprovem."
+                },
+                {
+                    "id": "obj_recomendacao",
+                    "descricao": "Conquistar 'Reconhecimento'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Anexar arquivos que comprovem."
+                },
+                {
+                    "id": "obj_projetos",
+                    "descricao": "Conquistar 'Ações Sociais'",
+                    "niveis": 1,
+                    "nivel_atual": 0,
+                    "concluido": false,
+                    "para_completar": "Anexar arquivos que comprovem."
+                }
+            ]
+        }
+    ]
+}

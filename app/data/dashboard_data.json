@@ -1,5 +1,5 @@
 {
-  "score_geral": 0.0,
+  "score_geral": 100.0,
   "badges": [
     {
       "id": "compromisso",
@@ -69,7 +69,7 @@
     {
       "id": "financeiro",
       "nome": "Pilar Financeiro",
-      "progresso": 0.0,
+      "progresso": 100.0,
       "objetivos": [
         {
           "id": "obj_sem_atraso",
@@ -100,7 +100,7 @@
     {
       "id": "anal\u00edtico",
       "nome": "Pilar Anal\u00edtico",
-      "progresso": 0.0,
+      "progresso": 100.0,
       "objetivos": [
         {
           "id": "obj_moradia",
@@ -131,7 +131,7 @@
     {
       "id": "social",
       "nome": "Pilar Social",
-      "progresso": 0.0,
+      "progresso": 100.0,
       "objetivos": [
         {
           "id": "obj_associacao",
