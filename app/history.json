@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "timestamp": "2025-10-17T09:38:07.150627",
+    "total_points": 69,
+    "category_results": [
+      {
+        "category": "Social",
+        "points": 26,
+        "percentage": 100.0
+      },
+      {
+        "category": "Financeiro",
+        "points": 28,
+        "percentage": 80.0
+      },
+      {
+        "category": "Anal\u00edtico",
+        "points": 15,
+        "percentage": 100.0
+      }
+    ],
+    "score_percentage": 90.78947368421053,
+    "risk_level": "Baixo Risco",
+    "recommended_decision": "Aprovar Cr\u00e9dito"
+  },
+  {
+    "timestamp": "2025-10-17T09:41:34.477670",
+    "total_points": 0,
+    "category_results": [
+      {
+        "category": "Financeiro",
+        "points": 0,
+        "percentage": 0.0
+      },
+      {
+        "category": "Social",
+        "points": 0,
+        "percentage": 0.0
+      },
+      {
+        "category": "Anal\u00edtico",
+        "points": 0,
+        "percentage": 0.0
+      }
+    ],
+    "score_percentage": 0.0,
+    "risk_level": "Alto Risco",
+    "recommended_decision": "Rejeitado"
+  }
+]

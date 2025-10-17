@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from datetime import datetime
 
-# --- Importações dos seus modelos (já estão corretas) ---
 from app.models.quiz.category_result import CategoryResult
 from app.models.quiz.user_answer import UserAnswer
 from app.models.quiz.final_result import FinalResult
@@ -33,21 +32,17 @@ with open(QUESTIONS_FILE, 'r', encoding='utf-8') as f:
 MAX_POINTS = 76
 category_max_points = {"Social": 26, "Financeiro": 35, "Analítico": 15}
 
-# --- Funções de Lógica Interna (CORRIGIDO) ---
-# Todas as funções auxiliares foram movidas para o topo para evitar NameError
+# --- Funções de Lógica Interna ---
 
 def load_dashboard_data() -> DashboardState:
-    """Lê e valida os dados do dashboard a partir do arquivo JSON."""
     with open(DASHBOARD_FILE, 'r', encoding='utf-8') as f:
         return DashboardState(**json.load(f))
 
 def save_dashboard_data(data: DashboardState):
-    """Salva os dados do dashboard no arquivo JSON."""
     with open(DASHBOARD_FILE, 'w', encoding='utf-8') as f:
         json.dump(data.model_dump(), f, indent=2)
 
 def save_result_to_history(result: FinalResult):
-    """Adiciona o resultado de um quiz ao arquivo de histórico."""
     try:
         with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
             history = json.load(f)
@@ -59,9 +54,6 @@ def save_result_to_history(result: FinalResult):
         json.dump(history, f, indent=2)
 
 def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
-    """
-    Atualiza o dashboard com base no resultado do quiz e nas regras do Plano de Ação.
-    """
     dashboard = load_dashboard_data()
 
     # 1. Atualiza score geral e progresso dos pilares
@@ -71,37 +63,65 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
         if pilar:
             pilar.progresso = cat_result.percentage
 
-    # 2. Lógica para atualizar Badges com base nas respostas do quiz
-    regras_quiz = {
+    # 2. Mapeamento completo entre perguntas do quiz, badges e objetivos
+    regras_quiz_badges = {
         "Já atrasou pagamento de contas nos últimos 12 meses?": {
-            "badge_id": "compromisso",
-            # CORREÇÃO: Removidos espaços do final das chaves
+            "badge_id": "compromisso", "obj_id": "obj_sem_atraso",
             "respostas": { "Nunca": 2, "1-2 vezes": 1, "Mais de 2 vezes": 0 }
         },
         "Como comprova a renda/faturamento do seu negócio?": {
-            "badge_id": "organizacao_fiscal",
+            "badge_id": "organizacao_fiscal", "obj_id": "obj_comprovacao_renda",
             "respostas": { "Documentos formais": 1, "Recibos informais": 1, "Não comprova": 0 }
         },
         "Mantém reservas financeiras?": {
-            "badge_id": "preparacao",
+            "badge_id": "preparacao", "obj_id": "obj_reservas",
             "respostas": { "Sim": 1, "Parcialmente": 0, "Não": 0 }
         },
         "Há quantos anos mora no endereço atual?": {
-            "badge_id": "estabilidade",
+            "badge_id": "estabilidade", "obj_id": "obj_moradia",
             "respostas": { "Mais de 10 anos": 2, "3-10 anos": 1, "Menos de 3 anos": 0 }
-        }
-        # Para habilitar as outras 5 badges, adicione as regras delas aqui!
+        },
+        "Compra de fornecedores locais regularmente?": {
+            "badge_id": "planejamento", "obj_id": "obj_fornecedores",
+            "respostas": { "Sempre": 1, "Frequentemente": 0, "Raramente": 0 }
+        },
+        "Mantém separação das finanças pessoais e do negócio?": {
+            "badge_id": "gestao_inteligente", "obj_id": "obj_separar_financas",
+            "respostas": { "Sim": 1, "Parcialmente": 0, "Não": 0 }
+        },
+        "Participa de associação de bairro?": {
+            "badge_id": "comprometimento_comunidade", "obj_id": "obj_associacao",
+            "respostas": { "Sim": 1, "Às vezes": 0, "Não": 0 }
+        },
+        "Já foi recomendado por outro membro da comunidade?": {
+            "badge_id": "reconhecimento", "obj_id": "obj_recomendacao",
+            "respostas": { "Sim": 1, "Às vezes": 0, "Não": 0 }
+        },
+        "Participa de projetos sociais/comunitários?": {
+            "badge_id": "acoes_sociais", "obj_id": "obj_projetos",
+            "respostas": { "Sim, ativamente": 1, "Eventualmente": 0, "Não": 0 }
+        },
     }
-    
+
+    # 3. Lógica para atualizar Badges e Objetivos
     for user_answer in answers:
-        if user_answer.question_text in regras_quiz:
-            regra = regras_quiz[user_answer.question_text]
+        question_text = user_answer.question_text.strip()
+        if question_text in regras_quiz_badges:
+            regra = regras_quiz_badges[question_text]
             badge = next((b for b in dashboard.badges if b.id == regra["badge_id"]), None)
+            
             if badge:
-                # CORREÇÃO: Usar .strip() para limpar os espaços em branco da resposta do usuário
                 answer_text = user_answer.answer.strip()
                 nivel_conquistado = regra["respostas"].get(answer_text, 0)
                 badge.nivel_atual = max(badge.nivel_atual, nivel_conquistado)
+
+                # Se a badge foi conquistada (nível > 0), marca o objetivo como concluído
+                if badge.nivel_atual > 0:
+                    for pilar in dashboard.pilares:
+                        objetivo = next((o for o in pilar.objetivos if o.id == regra["obj_id"]), None)
+                        if objetivo:
+                            objetivo.concluido = True
+                            break 
 
     save_dashboard_data(dashboard)
 
@@ -128,7 +148,7 @@ def calculate_result(answers: List[UserAnswer]):
     category_points = {}
     total_points = 0
     for user_answer in answers:
-        question_found = next((q for q in questions_with_weights if q["texto"] == user_answer.question_text), None)
+        question_found = next((q for q in questions_with_weights if q["texto"].strip() == user_answer.question_text.strip()), None)
         if question_found:
             category = question_found["categoria"]
             weight = next((opt["peso"] for opt in question_found["opcoes"] if opt["resposta"].strip() == user_answer.answer.strip()), 0)
@@ -158,24 +178,16 @@ def calculate_result(answers: List[UserAnswer]):
 
 @app.post("/reset", response_model=DashboardState)
 async def reset_dashboard():
-    with open(DASHBOARD_FILE, 'r', encoding='utf-8') as f:
+    # Carrega o estado inicial do dashboard_data.json
+    with open(os.path.join(BASE_DIR, '..', 'dashboard_data_initial.json'), 'r', encoding='utf-8') as f:
         initial_state_dict = json.load(f)
-
-    initial_state_dict['score_geral'] = 0.0
-    for pilar in initial_state_dict['pilares']:
-        pilar['progresso'] = 0.0
-        for objetivo in pilar['objetivos']:
-            objetivo['concluido'] = False
-            if 'nivel_atual' in objetivo:
-                objetivo['nivel_atual'] = 0
     
-    for badge in initial_state_dict['badges']:
-        badge['nivel_atual'] = 0
+    # Salva o estado inicial como o estado atual
+    with open(DASHBOARD_FILE, 'w', encoding='utf-8') as f:
+        json.dump(initial_state_dict, f, indent=2)
 
-    dashboard = DashboardState(**initial_state_dict)
-    save_dashboard_data(dashboard)
-    
+    # Limpa o histórico
     with open(HISTORY_FILE, 'w', encoding='utf-8') as f:
         json.dump([], f)
         
-    return dashboard
+    return DashboardState(**initial_state_dict)
