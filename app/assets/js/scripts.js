@@ -1,5 +1,5 @@
 // --- Constantes e Variáveis de Estado ---
-const API_URL = 'http://127.0.0.1:8084';
+const API_URL = 'http://127.0.0.1:8084/api';
 
 // Elementos do DOM
 const quizContainerEl = document.getElementById('quiz-container');
@@ -28,7 +28,7 @@ function shuffleArray(array) {
 // 1. Busca as perguntas na API e inicia o quiz
 async function carregarPerguntas() {
     try {
-        const response = await fetch(`${API_URL}/questions`);
+        const response = await fetch(`${API_URL}/quiz/questions`);
         if (!response.ok) {
             throw new Error(`O servidor respondeu com um erro: ${response.status} ${response.statusText}`);
         }
@@ -93,7 +93,7 @@ function proximaPergunta() {
 // 4. Envia as respostas para a API e REDIRECIONA
 async function finalizarQuiz() {
     try {
-        const response = await fetch(`${API_URL}/result`, {
+        const response = await fetch(`${API_URL}/quiz/result`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(respostasUsuario)
