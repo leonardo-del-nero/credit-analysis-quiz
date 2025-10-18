@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "timestamp": "2025-10-18T00:05:19.356697",
+    "total_points": 40,
+    "category_results": [
+      {
+        "category": "Financeiro",
+        "points": 21,
+        "percentage": 60.0
+      },
+      {
+        "category": "Social",
+        "points": 10,
+        "percentage": 38.46153846153847
+      },
+      {
+        "category": "Anal\u00edtico",
+        "points": 9,
+        "percentage": 60.0
+      }
+    ],
+    "score_percentage": 52.63157894736842,
+    "risk_level": "Alto Risco",
+    "recommended_decision": "Rejeitado"
+  }
+]

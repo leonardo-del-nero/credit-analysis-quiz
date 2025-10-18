@@ -14,8 +14,17 @@ INITIAL_DASHBOARD_FILE = os.path.join(DATA_DIR, 'dashboard_data_initial.json')
 
 
 def load_dashboard_data() -> DashboardState:
-    with open(DASHBOARD_FILE, 'r', encoding='utf-8') as f:
-        return DashboardState(**json.load(f))
+    try:
+        with open(DASHBOARD_FILE, 'r', encoding='utf-8') as f:
+            return DashboardState(**json.load(f))
+    except (FileNotFoundError, json.JSONDecodeError):
+        # Se o arquivo principal falhar, carrega o inicial como fallback
+        with open(INITIAL_DASHBOARD_FILE, 'r', encoding='utf-8') as f:
+            initial_data = json.load(f)
+            # Salva o estado inicial para corrigir o arquivo corrompido
+            with open(DASHBOARD_FILE, 'w', encoding='utf-8') as df:
+                json.dump(initial_data, df, indent=2)
+            return DashboardState(**initial_data)
 
 def save_dashboard_data(data: DashboardState):
     with open(DASHBOARD_FILE, 'w', encoding='utf-8') as f:
@@ -35,14 +44,13 @@ def save_result_to_history(result: FinalResult):
 def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
     dashboard = load_dashboard_data()
 
-    # 1. Atualiza score geral e progresso dos pilares
     dashboard.score_geral = result.score_percentage
+    dashboard.recommended_decision = result.recommended_decision
     for cat_result in result.category_results:
         pilar = next((p for p in dashboard.pilares if p.id == cat_result.category.lower()), None)
         if pilar:
             pilar.progresso = cat_result.percentage
 
-    # 2. Mapeamento completo entre perguntas do quiz, badges e objetivos
     regras_quiz_badges = {
         "Já atrasou pagamento de contas nos últimos 12 meses?": {
             "badge_id": "compromisso", "obj_id": "obj_sem_atraso",
@@ -82,7 +90,6 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
         },
     }
 
-    # 3. Lógica para atualizar Badges e Objetivos
     for user_answer in answers:
         question_text = user_answer.question_text.strip()
         if question_text in regras_quiz_badges:
@@ -94,7 +101,6 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
                 nivel_conquistado = regra["respostas"].get(answer_text, 0)
                 badge.nivel_atual = max(badge.nivel_atual, nivel_conquistado)
 
-                # Se a badge foi conquistada (nível > 0), marca o objetivo como concluído
                 if badge.nivel_atual > 0:
                     for pilar in dashboard.pilares:
                         objetivo = next((o for o in pilar.objetivos if o.id == regra["obj_id"]), None)
@@ -105,25 +111,21 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
     save_dashboard_data(dashboard)
 
 def reset_dashboard() -> DashboardState:
-    # Carrega o estado inicial do dashboard_data.json
     with open(INITIAL_DASHBOARD_FILE, 'r', encoding='utf-8') as f:
         initial_state_dict = json.load(f)
 
-    # Salva o estado inicial como o estado atual
     with open(DASHBOARD_FILE, 'w', encoding='utf-8') as f:
         json.dump(initial_state_dict, f, indent=2)
 
-    # Limpa o histórico
     with open(HISTORY_FILE, 'w', encoding='utf-8') as f:
         json.dump([], f)
         
     return DashboardState(**initial_state_dict)
 
 def get_history_data():
-    """Lê os dados do histórico."""
     try:
         with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return []
-    
+        
