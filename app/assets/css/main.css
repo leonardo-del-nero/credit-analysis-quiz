@@ -5,8 +5,8 @@
 }
 
 :root{
-  --bg: #000000;       
-  --text: #a00035;    
+  --bg: #06060a;       
+  --text: #fff;    
   --muted: #9aa4b2;
   --card: rgba(39, 0, 37, 0.02);
   --accent: #a00035;
@@ -18,7 +18,7 @@
 
 h3 {
   font-family: 'Coolvetica';
-  font-size: 25px;
+  font-size: 30px;
   color: #fff;
   margin-top: 0;
 }
@@ -39,10 +39,8 @@ body{
 
 /* header */
 .site-header{
-  background: transparent;
-  border-bottom: 2px solid rgba(255, 0, 242, 0.06);
+  background-color: #0e0e18;
   padding: 12px 16px;
-  position: sticky;
   top: 0;
   z-index: 40;
 }
@@ -59,14 +57,15 @@ body{
 /* nav */
 .nav{display:flex; gap:14px; align-items:center}
 .nav-link{
-  color:var(--text);
+  color: #000;
   text-decoration:none;
-  padding:8px 12px;
+  padding:12px 20px;
   border-radius:6px;
-  font-weight:600;
-  transition: background .18s ease, color .18s ease;
+  font-weight:700;
+  background-color: #ffd000;
+  transition: font-size .18s ease, color .18s ease;
 }
-.nav-link:hover{background:rgba(255, 0, 212, 0.06); color:var(--accent-dark)}
+.nav-link:hover{font-size: 18px;}
 
 .nav-toggle{display:none; background:transparent; color:var(--text); border:0; font-size:22px; cursor:pointer}
 
@@ -88,17 +87,19 @@ body{
 .start-actions input{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);min-width:180px}
 
 /* buttons */
-.btn{background:var(--accent);color:var(--bg);border:0;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700}
-.btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.04)}
+.btn{background:transparent;color:#ffd000;border:0;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700}
+.btn.secondary{background:transparent;color:#ffd000;}
+.btn.secondary:hover{background:#ffd000;color:#000;}
 .btn:disabled{opacity:.55;cursor:not-allowed}
 
 /* cards */
 .card{
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02rgba(255, 255, 255, 0.01)01));
+  background-color: #0e0e18;
   border-radius:12px;
   padding:18px;
   margin-bottom:16px;
-  border: #a00035 1px solid;
+  /* border: #a00035 1px solid; */
 }
 .hidden{display:none}
 
@@ -164,4 +165,32 @@ body{
 #badges-card {
   background-color: #a00035;
   text-align: center;
+}
+
+#historico {
+  border: none;
+}
+
+#historico h2 {
+  color: #555;
+}
+
+.history-item {
+  color: #fff;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.pilar-inner {
+  width: -webkit-fill-available;
+  margin-left: 15px;
+}
+
+.pilar {
+  display: flex;
+  align-items: center;
 }

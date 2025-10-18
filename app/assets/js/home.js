@@ -13,7 +13,9 @@ const resetBtn = document.getElementById('reset-btn');
 function renderDashboard(data) {
   // Score Geral
   scoreBarEl.style.width = `${data.score_geral.toFixed(1)}%`;
-  scoreBarEl.textContent = `${data.score_geral.toFixed(1)}%`;
+  if (data.score_geral != 0) {
+    scoreBarEl.textContent = `${data.score_geral.toFixed(1)}%`;
+  }
 
   // Decisão
   decisionTextEl.textContent = data.recommended_decision;
@@ -52,8 +54,14 @@ function renderDashboard(data) {
   data.pilares.forEach(pilar => {
     // Renderiza Pilar
     const pilarEl = document.createElement('div');
-    pilarEl.innerHTML = `<h4>${pilar.nome} (${pilar.progresso.toFixed(1)}%)</h4><div class="progress-bar-outer"><div class="progress-bar-inner" style="width: ${pilar.progresso}%"></div></div>`;
+    pilarEl.innerHTML = `
+                        <img src="../assets/img/${pilar.id}.png" class="icon">
+                        <div class="pilar-inner">
+                          <h4>${pilar.nome} (${pilar.progresso.toFixed(1)}%)</h4>
+                          <div class="progress-bar-outer"><div class="progress-bar-inner" style="width: ${pilar.progresso}%"></div></div>
+                        </div>`;
     pilaresListEl.appendChild(pilarEl);
+    pilarEl.classList.add("pilar")
 
     // Renderiza Objetivos do Pilar
     pilar.objetivos.forEach(obj => {
