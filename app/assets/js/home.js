@@ -2,6 +2,7 @@ const API_URL = 'http://127.0.0.1:8084/api';
 
 // --- ELEMENTOS DO DOM ---
 const scoreBarEl = document.getElementById('score-geral-bar');
+const decisionTextEl = document.getElementById('decision-text');
 const pilaresListEl = document.getElementById('pilares-list');
 const objetivosListEl = document.getElementById('objetivos-list');
 const badgesListEl = document.getElementById('badges-list');
@@ -14,11 +15,22 @@ function renderDashboard(data) {
   scoreBarEl.style.width = `${data.score_geral.toFixed(1)}%`;
   scoreBarEl.textContent = `${data.score_geral.toFixed(1)}%`;
 
+  // Decisão
+  decisionTextEl.textContent = data.recommended_decision;
+  decisionTextEl.className = 'decision-text-style'; // Reseta as classes
+  if (data.recommended_decision === 'Aprovar Crédito') {
+    decisionTextEl.classList.add('decision-aprovado');
+  } else if (data.recommended_decision === 'Análise complementar') {
+    decisionTextEl.classList.add('decision-analise');
+  } else if (data.recommended_decision === 'Rejeitado') {
+    decisionTextEl.classList.add('decision-rejeitado');
+  }
+
   pilaresListEl.innerHTML = '';
   objetivosListEl.innerHTML = '';
   badgesListEl.innerHTML = '';
 
-  // CORREÇÃO: Renderiza a lista de badges principal
+  // Renderiza a lista de badges principal
   if (data.badges) {
     data.badges.forEach(badge => {
       const badgeEl = document.createElement('div');
@@ -69,26 +81,30 @@ function renderHistory(data) {
 // --- LÓGICA PRINCIPAL ---
 async function carregarTudo() {
   try {
-    const [dashRes, histRes] = await Promise.all([
-      fetch(`${API_URL}/dashboard`),
-      fetch(`${API_URL}/history`)
-    ]);
-
-    if (!dashRes.ok) { // Adiciona verificação de erro para o dashboard
-      throw new Error(`Falha ao buscar dashboard: ${dashRes.statusText}`);
+    console.log("Buscando dados do dashboard...");
+    const dashRes = await fetch(`${API_URL}/dashboard`);
+    if (!dashRes.ok) {
+      throw new Error(`Falha ao buscar dashboard: ${dashRes.statusText} (${dashRes.status})`);
     }
-    if (!histRes.ok) { // Adiciona verificação de erro para o histórico
-      throw new Error(`Falha ao buscar histórico: ${histRes.statusText}`);
-    }
-
     const dashData = await dashRes.json();
-    const histData = await histRes.json();
-
+    console.log("Dados do dashboard recebidos.", dashData);
     renderDashboard(dashData);
+
+    console.log("Buscando histórico...");
+    const histRes = await fetch(`${API_URL}/history`);
+    if (!histRes.ok) {
+      throw new Error(`Falha ao buscar histórico: ${histRes.statusText} (${histRes.status})`);
+    }
+    const histData = await histRes.json();
+    console.log("Dados do histórico recebidos.", histData);
     renderHistory(histData);
+
   } catch (error) {
     console.error("Erro ao carregar dados:", error);
-    document.querySelector('.container').innerHTML = `<h1>Erro ao carregar dados da API.</h1><p>Verifique o console (F12) para mais detalhes.</p>`;
+    const container = document.querySelector('.container');
+    if (container) {
+        container.innerHTML = `<h1>Erro ao carregar dados da API.</h1><p>Verifique o console (F12) para mais detalhes.</p><p><strong>Detalhe do erro:</strong> ${error.message}</p>`;
+    }
   }
 }
 

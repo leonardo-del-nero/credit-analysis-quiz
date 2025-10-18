@@ -77,3 +77,27 @@
     font-size: 12px;
     margin: 0;
 }
+
+.decision-text-style {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: white;
+    background-color: var(--muted);
+}
+
+.decision-aprovado {
+    background-color: var(--success);
+}
+
+.decision-analise {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.decision-rejeitado {
+    background-color: var(--danger);
+}
