@@ -6,10 +6,10 @@
 
 :root{
   --bg: #000000;       
-  --text: #a80070;    
+  --text: #a00035;    
   --muted: #9aa4b2;
   --card: rgba(39, 0, 37, 0.02);
-  --accent: #a80070;
+  --accent: #a00035;
   --accent-dark: rgb(151, 0, 83);
   --success: #16a34a;
   --danger: #ef4444;
@@ -20,6 +20,7 @@ h3 {
   font-family: 'Coolvetica';
   font-size: 25px;
   color: #fff;
+  margin-top: 0;
 }
 
 *{box-sizing:border-box}
@@ -97,7 +98,7 @@ body{
   border-radius:12px;
   padding:18px;
   margin-bottom:16px;
-  border: #a80070 1px solid;
+  border: #a00035 1px solid;
 }
 .hidden{display:none}
 
@@ -155,16 +156,12 @@ body{
   .progress-bar-outer{height:22px}
 }
 
-#score-card {
-  background-color: #a80070;
-  color: #fff;
-}
 
 .progress-bar-outer {
   background-color: #aa6000;
 }
 
 #badges-card {
-  display: flex;
-  justify-content: space-between;
+  background-color: #a00035;
+  text-align: center;
 }

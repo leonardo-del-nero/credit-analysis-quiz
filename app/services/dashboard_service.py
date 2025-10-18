@@ -58,11 +58,11 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
         },
         "Como comprova a renda/faturamento do seu negócio?": {
             "badge_id": "organizacao_fiscal", "obj_id": "obj_comprovacao_renda",
-            "respostas": { "Documentos formais": 1, "Recibos informais": 1, "Não comprova": 0 }
+            "respostas": { "Documentos formais": 2, "Recibos informais": 1, "Não comprova": 0 }
         },
         "Mantém reservas financeiras?": {
             "badge_id": "preparacao", "obj_id": "obj_reservas",
-            "respostas": { "Sim": 1, "Parcialmente": 0, "Não": 0 }
+            "respostas": { "Sim": 2, "Parcialmente": 1, "Não": 0 }
         },
         "Há quantos anos mora no endereço atual?": {
             "badge_id": "estabilidade", "obj_id": "obj_moradia",
@@ -70,23 +70,23 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
         },
         "Compra de fornecedores locais regularmente?": {
             "badge_id": "planejamento", "obj_id": "obj_fornecedores",
-            "respostas": { "Sempre": 1, "Frequentemente": 0, "Raramente": 0 }
+            "respostas": { "Sempre": 2, "Frequentemente": 1, "Raramente": 0 }
         },
         "Mantém separação das finanças pessoais e do negócio?": {
             "badge_id": "gestao_inteligente", "obj_id": "obj_separar_financas",
-            "respostas": { "Sim": 1, "Parcialmente": 0, "Não": 0 }
+            "respostas": { "Sim": 2, "Parcialmente": 1, "Não": 0 }
         },
         "Participa de associação de bairro?": {
             "badge_id": "comprometimento_comunidade", "obj_id": "obj_associacao",
-            "respostas": { "Sim": 1, "Às vezes": 0, "Não": 0 }
+            "respostas": { "Sim": 2, "Às vezes": 1, "Não": 0 }
         },
         "Já foi recomendado por outro membro da comunidade?": {
             "badge_id": "reconhecimento", "obj_id": "obj_recomendacao",
-            "respostas": { "Sim": 1, "Às vezes": 0, "Não": 0 }
+            "respostas": { "Sim": 2, "Às vezes": 1, "Não": 0 }
         },
         "Participa de projetos sociais/comunitários?": {
             "badge_id": "acoes_sociais", "obj_id": "obj_projetos",
-            "respostas": { "Sim, ativamente": 1, "Eventualmente": 0, "Não": 0 }
+            "respostas": { "Sim, ativamente": 2, "Eventualmente": 1, "Não": 0 }
         },
     }
 
@@ -101,7 +101,7 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
                 nivel_conquistado = regra["respostas"].get(answer_text, 0)
                 badge.nivel_atual = max(badge.nivel_atual, nivel_conquistado)
 
-                if badge.nivel_atual > 0:
+                if badge.nivel_atual >= 2:
                     for pilar in dashboard.pilares:
                         objetivo = next((o for o in pilar.objetivos if o.id == regra["obj_id"]), None)
                         if objetivo:

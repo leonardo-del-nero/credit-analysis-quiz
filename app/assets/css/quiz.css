@@ -19,7 +19,7 @@ body {
 /* --- Card Principal do Quiz --- */
 .quiz-card {
     background-color: #000000;
-    border: #a80070 1px solid;
+    border: #a00035 1px solid;
     border-radius: 15px;
     width: 80%;
     height: 70vh;
@@ -38,7 +38,7 @@ body {
 /* --- Cabeçalho e Progresso --- */
 .card-header {
     padding: 20px 25px;
-    background-color: #a80070;
+    background-color: #a00035;
     color: rgb(0, 0, 0);
 }
 
@@ -93,7 +93,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #000000;
-    border: 2px solid #a80070;
+    border: 2px solid #ffd000;
     border-radius: 8px;
     padding: 15px;
     cursor: pointer;
@@ -109,8 +109,8 @@ body {
 
 /* Estilo para a opção SELECIONADA */
 #opcoes-form input[type="radio"]:checked + label {
-    background-color: #a80070;
-    border-color: #a80070;
+    background-color: #ffd000;
+    border-color: #ffd000;
     color:#000000;
     font-weight: 600;
 }
@@ -124,7 +124,7 @@ body {
 
 #next-btn {
     background-color: #000000;
-    border: #a80070 1px solid;
+    border: #a00035 1px solid;
     border-radius: 8px;
     color: #ffffff;
     padding: 12px 30px;
@@ -135,7 +135,7 @@ body {
 }
 
 #next-btn:hover {
-    background-color: #a80070;
+    background-color: #a00035;
     color: #000000;
 }
 

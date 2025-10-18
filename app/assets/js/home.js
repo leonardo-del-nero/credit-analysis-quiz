@@ -39,7 +39,9 @@ function renderDashboard(data) {
       badgeEl.title = badge.descricao; // Dica ao passar o mouse
 
       badgeEl.innerHTML = `
-                <div class="badge-circle">${badge.nivel_atual}/${badge.niveis}</div>
+                <div class="badge-circle">
+                  <img src="../assets/img/${badge.id}.png" class="badge-img">
+                </div>
                 <p>${badge.nome}</p>
             `;
       badgesListEl.appendChild(badgeEl);
