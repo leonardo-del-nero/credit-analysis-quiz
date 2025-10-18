@@ -7,5 +7,4 @@ class DashboardState(BaseModel):
     score_geral: float
     badges: List[Badge]
     pilares: List[Pilar]
-    recommended_decision: str
     
