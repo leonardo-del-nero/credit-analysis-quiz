@@ -54,39 +54,39 @@ def update_dashboard_from_quiz(result: FinalResult, answers: List[UserAnswer]):
     regras_quiz_badges = {
         "Já atrasou pagamento de contas nos últimos 12 meses?": {
             "badge_id": "compromisso", "obj_id": "obj_sem_atraso",
-            "respostas": { "Nunca": 2, "1-2 vezes": 1, "Mais de 2 vezes": 0 }
+            "respostas": { "Nunca": 2, "1-2 vezes": 0, "Mais de 2 vezes": 0 }
         },
         "Como comprova a renda/faturamento do seu negócio?": {
             "badge_id": "organizacao_fiscal", "obj_id": "obj_comprovacao_renda",
-            "respostas": { "Documentos formais": 2, "Recibos informais": 1, "Não comprova": 0 }
+            "respostas": { "Documentos formais": 2, "Recibos informais": 0, "Não comprova": 0 }
         },
         "Mantém reservas financeiras?": {
             "badge_id": "preparacao", "obj_id": "obj_reservas",
-            "respostas": { "Sim": 2, "Parcialmente": 1, "Não": 0 }
+            "respostas": { "Sim": 2, "Parcialmente": 0, "Não": 0 }
         },
         "Há quantos anos mora no endereço atual?": {
             "badge_id": "estabilidade", "obj_id": "obj_moradia",
-            "respostas": { "Mais de 10 anos": 2, "3-10 anos": 1, "Menos de 3 anos": 0 }
+            "respostas": { "Mais de 10 anos": 2, "3-10 anos": 0, "Menos de 3 anos": 0 }
         },
         "Compra de fornecedores locais regularmente?": {
             "badge_id": "planejamento", "obj_id": "obj_fornecedores",
-            "respostas": { "Sempre": 2, "Frequentemente": 1, "Raramente": 0 }
+            "respostas": { "Sempre": 2, "Frequentemente": 0, "Raramente": 0 }
         },
         "Mantém separação das finanças pessoais e do negócio?": {
             "badge_id": "gestao_inteligente", "obj_id": "obj_separar_financas",
-            "respostas": { "Sim": 2, "Parcialmente": 1, "Não": 0 }
+            "respostas": { "Sim": 2, "Parcialmente": 0, "Não": 0 }
         },
         "Participa de associação de bairro?": {
             "badge_id": "comprometimento_comunidade", "obj_id": "obj_associacao",
-            "respostas": { "Sim": 2, "Às vezes": 1, "Não": 0 }
+            "respostas": { "Sim": 2, "Às vezes": 0, "Não": 0 }
         },
         "Já foi recomendado por outro membro da comunidade?": {
             "badge_id": "reconhecimento", "obj_id": "obj_recomendacao",
-            "respostas": { "Sim": 2, "Às vezes": 1, "Não": 0 }
+            "respostas": { "Sim": 2, "Às vezes": 0, "Não": 0 }
         },
         "Participa de projetos sociais/comunitários?": {
             "badge_id": "acoes_sociais", "obj_id": "obj_projetos",
-            "respostas": { "Sim, ativamente": 2, "Eventualmente": 1, "Não": 0 }
+            "respostas": { "Sim, ativamente": 2, "Eventualmente": 0, "Não": 0 }
         },
     }
 

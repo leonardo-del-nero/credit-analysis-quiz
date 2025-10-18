@@ -1,18 +1,18 @@
 {
-  "score_geral": 78.94736842105263,
+  "score_geral": 0.0,
   "badges": [
     {
       "id": "compromisso",
       "nome": "Compromisso",
       "niveis": 2,
-      "nivel_atual": 2,
+      "nivel_atual": 0,
       "descricao": "Conquistado por n\u00e3o ter atraso nos pagamentos."
     },
     {
       "id": "organizacao_fiscal",
       "nome": "Organiza\u00e7\u00e3o Fiscal",
       "niveis": 2,
-      "nivel_atual": 2,
+      "nivel_atual": 0,
       "descricao": "Conquistado pela comprova\u00e7\u00e3o de renda."
     },
     {
@@ -26,7 +26,7 @@
       "id": "estabilidade",
       "nome": "Estabilidade",
       "niveis": 2,
-      "nivel_atual": 2,
+      "nivel_atual": 0,
       "descricao": "Conquistado por tempo de moradia no mesmo endere\u00e7o."
     },
     {
@@ -47,21 +47,21 @@
       "id": "comprometimento_comunidade",
       "nome": "Comprometimento",
       "niveis": 2,
-      "nivel_atual": 2,
+      "nivel_atual": 0,
       "descricao": "Conquistado pela participa\u00e7\u00e3o em associa\u00e7\u00f5es de bairro."
     },
     {
       "id": "reconhecimento",
       "nome": "Reconhecimento",
       "niveis": 2,
-      "nivel_atual": 2,
+      "nivel_atual": 0,
       "descricao": "Conquistado por recomenda\u00e7\u00e3o de outros membros da comunidade."
     },
     {
       "id": "acoes_sociais",
       "nome": "A\u00e7\u00f5es Sociais",
       "niveis": 2,
-      "nivel_atual": 2,
+      "nivel_atual": 0,
       "descricao": "Conquistado pela participa\u00e7\u00e3o em projetos sociais."
     }
   ],
@@ -69,14 +69,14 @@
     {
       "id": "financeiro",
       "nome": "Pilar Financeiro",
-      "progresso": 74.28571428571429,
+      "progresso": 0.0,
       "objetivos": [
         {
           "id": "obj_sem_atraso",
           "descricao": "Atingir N\u00edvel 2 em 'Compromisso'",
           "niveis": 2,
           "nivel_atual": 0,
-          "concluido": true,
+          "concluido": false,
           "para_completar": "Conectar conta banc\u00e1ria (n\u00e3o funcional)."
         },
         {
@@ -84,7 +84,7 @@
           "descricao": "Conquistar 'Organiza\u00e7\u00e3o Fiscal'",
           "niveis": 2,
           "nivel_atual": 0,
-          "concluido": true,
+          "concluido": false,
           "para_completar": "Anexar documentos fiscais dos \u00faltimos 3 meses."
         },
         {
@@ -100,14 +100,14 @@
     {
       "id": "anal\u00edtico",
       "nome": "Pilar Anal\u00edtico",
-      "progresso": 53.333333333333336,
+      "progresso": 0.0,
       "objetivos": [
         {
           "id": "obj_moradia",
           "descricao": "Atingir N\u00edvel 2 em 'Estabilidade'",
           "niveis": 2,
           "nivel_atual": 0,
-          "concluido": true,
+          "concluido": false,
           "para_completar": "Informar o ano em que se mudou."
         },
         {
@@ -131,14 +131,14 @@
     {
       "id": "social",
       "nome": "Pilar Social",
-      "progresso": 100.0,
+      "progresso": 0.0,
       "objetivos": [
         {
           "id": "obj_associacao",
           "descricao": "Conquistar 'Comprometimento'",
           "niveis": 2,
           "nivel_atual": 0,
-          "concluido": true,
+          "concluido": false,
           "para_completar": "Anexar arquivos que comprovem."
         },
         {
@@ -146,19 +146,19 @@
           "descricao": "Conquistar 'Reconhecimento'",
           "niveis": 2,
           "nivel_atual": 0,
-          "concluido": true,
+          "concluido": false,
           "para_completar": "Anexar arquivos que comprovem."
         },
         {
           "id": "obj_projetos",
-          "descricao": "Conquistar 'A\u00e7\u00f5es Sociais'",
+          "descricao": "Conquistar 'A\u00e7\u00f5es Sociais'abl\u00e9bul\u00e9",
           "niveis": 2,
           "nivel_atual": 0,
-          "concluido": true,
+          "concluido": false,
           "para_completar": "Anexar arquivos que comprovem."
         }
       ]
     }
   ],
-  "recommended_decision": "An\u00e1lise complementar"
+  "recommended_decision": "Nenhuma simula\u00e7\u00e3o realizada"
 }
