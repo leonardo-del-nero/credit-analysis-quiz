@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "timestamp": "2025-10-17T23:21:57.698225",
+    "total_points": 52,
+    "category_results": [
+      {
+        "category": "Financeiro",
+        "points": 27,
+        "percentage": 77.14285714285715
+      },
+      {
+        "category": "Social",
+        "points": 12,
+        "percentage": 46.15384615384615
+      },
+      {
+        "category": "Anal\u00edtico",
+        "points": 13,
+        "percentage": 86.66666666666667
+      }
+    ],
+    "score_percentage": 68.42105263157895,
+    "risk_level": "M\u00e9dio Risco",
+    "recommended_decision": "An\u00e1lise complementar"
+  },
+  {
+    "timestamp": "2025-10-17T23:22:30.862006",
+    "total_points": 47,
+    "category_results": [
+      {
+        "category": "Financeiro",
+        "points": 18,
+        "percentage": 51.42857142857142
+      },
+      {
+        "category": "Anal\u00edtico",
+        "points": 11,
+        "percentage": 73.33333333333333
+      },
+      {
+        "category": "Social",
+        "points": 18,
+        "percentage": 69.23076923076923
+      }
+    ],
+    "score_percentage": 61.8421052631579,
+    "risk_level": "M\u00e9dio Risco",
+    "recommended_decision": "An\u00e1lise complementar"
+  },
+  {
+    "timestamp": "2025-10-18T00:07:14.855312",
+    "total_points": 50,
+    "category_results": [
+      {
+        "category": "Financeiro",
+        "points": 19,
+        "percentage": 54.285714285714285
+      },
+      {
+        "category": "Anal\u00edtico",
+        "points": 11,
+        "percentage": 73.33333333333333
+      },
+      {
+        "category": "Social",
+        "points": 20,
+        "percentage": 76.92307692307693
+      }
+    ],
+    "score_percentage": 65.78947368421053,
+    "risk_level": "M\u00e9dio Risco",
+    "recommended_decision": "An\u00e1lise complementar"
+  }
+]

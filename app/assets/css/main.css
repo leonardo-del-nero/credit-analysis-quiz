@@ -1,6 +1,12 @@
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('../fonts/CoolveticaRg.otf');
+  font-weight: bold;
+}
+
 :root{
-  --bg: #000000;       /* fundo preto (combina com a logo que enviou) */
-  --text: #a80070;     /* amarelo principal (texto/destaque) */
+  --bg: #000000;       
+  --text: #a80070;    
   --muted: #9aa4b2;
   --card: rgba(39, 0, 37, 0.02);
   --accent: #a80070;
@@ -8,6 +14,12 @@
   --success: #16a34a;
   --danger: #ef4444;
   --max-width: 1100px;
+}
+
+h3 {
+  font-family: 'Coolvetica';
+  font-size: 25px;
+  color: #fff;
 }
 
 *{box-sizing:border-box}
@@ -111,7 +123,7 @@ body{
 .progress-bar-inner{
   height:100%;
   width:0%;
-  background: linear-gradient(90deg,var(--accent),var(--accent-dark));
+  background-color: #ffd000;
   color:var(--bg);
   font-weight:700;
   display:flex;align-items:center;justify-content:center;
@@ -141,4 +153,18 @@ body{
 @media(max-width:480px){
   .brand img{height:40px}
   .progress-bar-outer{height:22px}
+}
+
+#score-card {
+  background-color: #a80070;
+  color: #fff;
+}
+
+.progress-bar-outer {
+  background-color: #aa6000;
+}
+
+#badges-card {
+  display: flex;
+  justify-content: space-between;
 }
